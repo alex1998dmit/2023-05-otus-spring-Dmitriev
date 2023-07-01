@@ -1,8 +1,8 @@
-package org.homework.config;
+package org.example.homework3.configs;
 
-import org.homework.service.AppStarter;
-import org.homework.service.AppStarterImpl;
-import org.homework.service.ExamService;
+import org.example.homework3.service.AppStarter;
+import org.example.homework3.service.AppStarterImpl;
+import org.example.homework3.service.ExamService;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 

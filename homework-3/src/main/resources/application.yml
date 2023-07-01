@@ -1,0 +1,3 @@
+application:
+  filePath: /questions.csv
+  answersToPass: 4

@@ -11,7 +11,7 @@ import java.util.List;
 
 public class QuestionsDaoTest {
     @Test
-    public void getQuestionsTest() throws Exception {
+    public void getQuestionsTest() {
         QuestionsDao questionsDao = new QuestionsDaoImpl("/questions.csv");
         List<Question> questionList = questionsDao.getQuestions();
         assertThat(questionList)

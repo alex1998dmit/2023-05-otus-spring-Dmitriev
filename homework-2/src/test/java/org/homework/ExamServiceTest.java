@@ -7,6 +7,7 @@ import org.homework.service.ExamServiceImpl;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.junit.MockitoJUnitRunner;
@@ -26,20 +27,22 @@ public class ExamServiceTest {
     @Mock
     private QuestionsDao questionsDao;
 
+
+    @InjectMocks
+    int answersToPass = 1;
     @Before
-    public void init() throws Exception {
+    public void init() {
         Mockito.when(questionsDao.getQuestions()).thenReturn(
                 List.of(
                         new Question("Test1", "Answer1"),
                         new Question("Test2", "Answer2")
                 )
         );
-        int answersToPass = 1;
         examService = new ExamServiceImpl(questionsDao, answersToPass);
     }
 
     @Test
-    public void successTest() throws Exception {
+    public void successTest() {
         InputStream in = new ByteArrayInputStream("alex\ndmit\nAnswer1\nAnswer2".getBytes());
         System.setIn(in);
         Scanner scanner = new Scanner(in);

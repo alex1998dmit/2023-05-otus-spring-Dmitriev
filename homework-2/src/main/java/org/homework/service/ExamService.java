@@ -3,7 +3,7 @@ package org.homework.service;
 import java.util.Scanner;
 
 public interface ExamService {
-    void exam() throws Exception;
+    void exam();
 
     void setScanner(Scanner scanner);
 

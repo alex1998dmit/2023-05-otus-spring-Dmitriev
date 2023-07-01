@@ -3,10 +3,14 @@ package org.homework.service;
 import org.homework.dao.QuestionsDao;
 import org.homework.domain.Question;
 import org.homework.domain.Student;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Scanner;
 
+@Service
 public class ExamServiceImpl implements ExamService {
     private static final String QUESTION_TITLE = "Question: ";
 
@@ -34,9 +38,33 @@ public class ExamServiceImpl implements ExamService {
 
     private int rightAnswersGiven = 0;
 
-    public ExamServiceImpl(QuestionsDao questionsDao, int answersToPass) {
+    @Autowired
+    public ExamServiceImpl(QuestionsDao questionsDao, @Value("${answersToPass}") int answersToPass) {
         this.questionsDao = questionsDao;
         this.answersToPass = answersToPass;
+    }
+
+    @Override
+    public void setScanner(Scanner scanner) {
+        this.scanner = scanner;
+    }
+
+    @Override
+    public void exam() {
+        List<Question> questionList = questionsDao.getQuestions();
+        fillUserInfo();
+        answerTheQuestions(questionList);
+        printExamResults();
+    }
+
+    @Override
+    public int getAmountOfRightAnswersGiven() {
+        return rightAnswersGiven;
+    }
+
+    @Override
+    public Boolean isExamPassed() {
+        return this.rightAnswersGiven >= this.answersToPass;
     }
 
     private void fillUserInfo() {
@@ -59,14 +87,6 @@ public class ExamServiceImpl implements ExamService {
         }
     }
 
-    public int getAmountOfRightAnswersGiven() {
-        return rightAnswersGiven;
-    }
-
-    public Boolean isExamPassed() {
-        return this.rightAnswersGiven >= this.answersToPass;
-    }
-
     private void printExamResults() {
         System.out.print(student.getFullName() + " ");
         System.out.print(isExamPassed() ? CONGRATS_TITLE : REGRETS_TITLE);
@@ -74,17 +94,5 @@ public class ExamServiceImpl implements ExamService {
 
     private void answerTheQuestions(List<Question> questionArray) {
         questionArray.forEach(this::printAndAnswerTheQuestion);
-    }
-
-    public void setScanner(Scanner scanner) {
-        this.scanner = scanner;
-    }
-
-    @Override
-    public void exam() throws Exception {
-        List<Question> questionList = questionsDao.getQuestions();
-        fillUserInfo();
-        answerTheQuestions(questionList);
-        printExamResults();
     }
 }
