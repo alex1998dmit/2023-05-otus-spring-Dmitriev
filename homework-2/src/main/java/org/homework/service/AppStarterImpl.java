@@ -8,7 +8,7 @@ public class AppStarterImpl implements AppStarter {
     }
 
     @Override
-    public void run() throws Exception {
+    public void run() {
         examService.exam();
     }
 }

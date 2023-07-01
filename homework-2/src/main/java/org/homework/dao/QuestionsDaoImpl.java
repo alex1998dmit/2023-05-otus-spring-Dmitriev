@@ -17,7 +17,7 @@ public class QuestionsDaoImpl implements QuestionsDao {
         this.path = path;
     }
 
-    private List<CSVRecord> readQuestionsFromCSV() throws Exception {
+    private List<CSVRecord> readQuestionsFromCSV() {
         InputStream is = this.getClass().getResourceAsStream(path);
         assert is != null;
         try(
@@ -25,13 +25,19 @@ public class QuestionsDaoImpl implements QuestionsDao {
                 CSVParser csvParser = new CSVParser(reader, CSVFormat.Builder.create().setDelimiter(';').build())
         ) {
             return csvParser.getRecords();
+        } catch (Exception e) {
+            throw new RuntimeException(e);
         }
     }
 
     @Override
-    public List<Question> getQuestions() throws Exception {
+    public List<Question> getQuestions() {
         List<Question> questionList = new ArrayList<>();
-        this.readQuestionsFromCSV().forEach(record -> questionList.add(new Question(record.get(0), record.get(1))));
+        this.readQuestionsFromCSV().forEach(
+                record -> questionList.add(
+                        new Question(record.get(0), record.get(1))
+                )
+        );
         return questionList;
     }
 }

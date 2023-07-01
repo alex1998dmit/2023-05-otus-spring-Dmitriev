@@ -5,5 +5,5 @@ import org.homework.domain.Question;
 import java.util.List;
 
 public interface QuestionsDao {
-    List<Question> getQuestions() throws Exception;
+    List<Question> getQuestions();
 }

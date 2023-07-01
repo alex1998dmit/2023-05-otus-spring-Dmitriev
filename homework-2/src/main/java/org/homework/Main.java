@@ -10,7 +10,7 @@ import org.springframework.context.annotation.PropertySource;
 @ComponentScan
 @PropertySource("classpath:application.properties")
 public class Main {
-    public static void main(String[] args) throws Exception {
+    public static void main(String[] args) {
         AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext(Main.class);
         AppStarter appStarter = context.getBean(AppStarter.class);
         appStarter.run();

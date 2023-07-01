@@ -39,6 +39,29 @@ public class ExamServiceImpl implements ExamService {
         this.answersToPass = answersToPass;
     }
 
+    @Override
+    public void setScanner(Scanner scanner) {
+        this.scanner = scanner;
+    }
+
+    @Override
+    public void exam() {
+        List<Question> questionList = questionsDao.getQuestions();
+        fillUserInfo();
+        answerTheQuestions(questionList);
+        printExamResults();
+    }
+
+    @Override
+    public int getAmountOfRightAnswersGiven() {
+        return rightAnswersGiven;
+    }
+
+    @Override
+    public Boolean isExamPassed() {
+        return this.rightAnswersGiven >= this.answersToPass;
+    }
+
     private void fillUserInfo() {
         System.out.println(WHAT_STUDENT_FIRST_NAME_TITLE);
         String firstName = scanner.nextLine();
@@ -59,14 +82,6 @@ public class ExamServiceImpl implements ExamService {
         }
     }
 
-    public int getAmountOfRightAnswersGiven() {
-        return rightAnswersGiven;
-    }
-
-    public Boolean isExamPassed() {
-        return this.rightAnswersGiven >= this.answersToPass;
-    }
-
     private void printExamResults() {
         System.out.print(student.getFullName() + " ");
         System.out.print(isExamPassed() ? CONGRATS_TITLE : REGRETS_TITLE);
@@ -74,17 +89,5 @@ public class ExamServiceImpl implements ExamService {
 
     private void answerTheQuestions(List<Question> questionArray) {
         questionArray.forEach(this::printAndAnswerTheQuestion);
-    }
-
-    public void setScanner(Scanner scanner) {
-        this.scanner = scanner;
-    }
-
-    @Override
-    public void exam() throws Exception {
-        List<Question> questionList = questionsDao.getQuestions();
-        fillUserInfo();
-        answerTheQuestions(questionList);
-        printExamResults();
     }
 }
