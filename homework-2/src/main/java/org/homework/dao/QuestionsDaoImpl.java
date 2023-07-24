@@ -4,7 +4,6 @@ import org.apache.commons.csv.CSVFormat;
 import org.apache.commons.csv.CSVParser;
 import org.apache.commons.csv.CSVRecord;
 import org.homework.domain.Question;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
@@ -17,9 +16,19 @@ import java.util.List;
 public class QuestionsDaoImpl implements QuestionsDao {
     private final String path;
 
-    @Autowired
     public QuestionsDaoImpl(@Value("${filePath}") String filePath) {
         this.path = filePath;
+    }
+
+    @Override
+    public List<Question> getQuestions() {
+        List<Question> questionList = new ArrayList<>();
+        this.readQuestionsFromCSV().forEach(
+                record -> questionList.add(
+                        new Question(record.get(0), record.get(1))
+                )
+        );
+        return questionList;
     }
 
     private List<CSVRecord> readQuestionsFromCSV() {
@@ -33,16 +42,5 @@ public class QuestionsDaoImpl implements QuestionsDao {
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
-    }
-
-    @Override
-    public List<Question> getQuestions() {
-        List<Question> questionList = new ArrayList<>();
-        this.readQuestionsFromCSV().forEach(
-                record -> questionList.add(
-                        new Question(record.get(0), record.get(1))
-                )
-        );
-        return questionList;
     }
 }
