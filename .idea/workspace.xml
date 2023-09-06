@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="2d49eeb4-ba22-493f-8099-9848c2c3974b" name="Changes" comment="Init homework-5">
+      <change afterPath="$PROJECT_DIR$/homework-4/src/main/java/org/homework/utils/ConsoleReader.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/homework-4/src/main/java/org/homework/utils/ConsoleReaderImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/homework-4/src/main/java/org/homework/utils/ConsoleWriter.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/homework-4/src/main/java/org/homework/utils/ConsoleWriterImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/homework-4/src/main/java/org/homework/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/homework-4/src/main/java/org/homework/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/homework-4/src/main/java/org/homework/service/ExamServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/homework-4/src/main/java/org/homework/service/ExamServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/homework-4/src/test/java/org/homework/ExamServiceTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/homework-4/src/test/java/org/homework/ExamServiceTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/homework-4/target/classes/org/homework/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/homework-4/target/classes/org/homework/Main.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-shell.log" beforeDir="false" afterPath="$PROJECT_DIR$/spring-shell.log" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="homework-5" />
+      </map>
+    </option>
+  </component>
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "git-widget-placeholder": "homework-4",
+    "node.js.selected.package.tslint": "(autodetect)"
+  }
+}]]></component>
+  <component name="RunManager" selected="JUnit.QuestionsDaoTest (1)">
+    <configuration name="ExamServiceTest (1)" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="homework-4" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="org.homework.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="org.homework" />
+      <option name="MAIN_CLASS_NAME" value="org.homework.ExamServiceTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="ExamServiceTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="homework-3" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="org.homework.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="org.homework" />
+      <option name="MAIN_CLASS_NAME" value="org.homework.ExamServiceTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="ExamServiceTest.successTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="homework-4" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="org.homework.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="org.homework" />
+      <option name="MAIN_CLASS_NAME" value="org.homework.ExamServiceTest" />
+      <option name="METHOD_NAME" value="successTest" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="QuestionsDaoTest (1)" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="homework-4" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="org.homework.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="org.homework" />
+      <option name="MAIN_CLASS_NAME" value="org.homework.QuestionsDaoTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="QuestionsDaoTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="homework-3" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="org.homework.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="org.homework" />
+      <option name="MAIN_CLASS_NAME" value="org.homework.QuestionsDaoTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Main (1)" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
+      <module name="homework-4" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="org.homework.Main" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Main" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
+      <module name="homework-3" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="org.homework.Main" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <list>
+      <item itemvalue="JUnit.ExamServiceTest" />
+      <item itemvalue="JUnit.ExamServiceTest (1)" />
+      <item itemvalue="JUnit.ExamServiceTest.successTest" />
+      <item itemvalue="JUnit.QuestionsDaoTest" />
+      <item itemvalue="JUnit.QuestionsDaoTest (1)" />
+      <item itemvalue="Spring Boot.Main (1)" />
+      <item itemvalue="Spring Boot.Main" />
+    </list>
+    <recent_temporary>
+      <list>
+        <item itemvalue="JUnit.QuestionsDaoTest (1)" />
+        <item itemvalue="JUnit.ExamServiceTest (1)" />
+        <item itemvalue="JUnit.QuestionsDaoTest" />
+        <item itemvalue="JUnit.ExamServiceTest" />
+        <item itemvalue="JUnit.ExamServiceTest.successTest" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="TaskManager">
+    <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Init homework-5" />
+    <option name="LAST_COMMIT_MESSAGE" value="Init homework-5" />
+  </component>
+</project>

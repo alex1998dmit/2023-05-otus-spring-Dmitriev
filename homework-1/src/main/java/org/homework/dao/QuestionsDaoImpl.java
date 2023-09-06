@@ -21,7 +21,7 @@ public class QuestionsDaoImpl implements QuestionsDao {
         InputStream is = this.getClass().getResourceAsStream(path);
         List<Question> questionList = new ArrayList<>();
         assert is != null;
-        try(
+        try (
                 InputStreamReader reader = new InputStreamReader(is);
                 CSVParser csvParser = new CSVParser(reader, CSVFormat.Builder.create().setDelimiter(';').build())
         ) {
