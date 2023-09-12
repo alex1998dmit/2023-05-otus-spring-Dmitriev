@@ -4,13 +4,12 @@ import org.homework.config.ApplicationSettings;
 import org.homework.dao.QuestionsDao;
 import org.homework.domain.Question;
 import org.homework.domain.Student;
-import org.homework.utils.ConsoleReader;
-import org.homework.utils.ConsoleReaderImpl;
-import org.homework.utils.ConsoleWriter;
-import org.homework.utils.ConsoleWriterImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.MessageSource;
 import org.springframework.stereotype.Service;
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+import java.io.PrintStream;
 import java.util.List;
 
 @Service
@@ -35,9 +34,11 @@ public class ExamServiceImpl implements ExamService {
 
     private final QuestionsDao questionsDao;
 
-    private ConsoleReader consoleReader = new ConsoleReaderImpl();
+    private final BufferedReader in;
 
-    private final ConsoleWriter consoleWriter = new ConsoleWriterImpl();
+    private final PrintStream out;
+
+    private Student student;
 
     private int rightAnswersGiven = 0;
 
@@ -48,11 +49,13 @@ public class ExamServiceImpl implements ExamService {
     public ExamServiceImpl(
             QuestionsDao questionsDao,
             MessageSource messageSource,
-            ConsoleReader consoleReader,
+            BufferedReader in,
+            PrintStream out,
             ApplicationSettings applicationSettings
     ) {
         this.questionsDao = questionsDao;
-        this.consoleReader = consoleReader;
+        this.in = in;
+        this.out = out;
         this.messageSource = messageSource;
         this.applicationSettings = applicationSettings;
     }
@@ -64,6 +67,8 @@ public class ExamServiceImpl implements ExamService {
             ApplicationSettings applicationSettings
     ) {
         this.questionsDao = questionsDao;
+        this.in = new BufferedReader(new InputStreamReader(System.in));
+        this.out = System.out;
         this.messageSource = messageSource;
         this.applicationSettings = applicationSettings;
     }
@@ -92,20 +97,33 @@ public class ExamServiceImpl implements ExamService {
 
     public Student fillUserInfo() {
         printMessage(WHAT_STUDENT_FIRST_NAME_TITLE);
-        String firstName = consoleReader.read();
+        String firstName = readLine();
         printMessage(WHAT_STUDENT_LAST_NAME_TITLE);
-        String lastName = consoleReader.read();
-        return new Student(firstName, lastName);
+        String lastName = readLine();
+        this.student = new Student(firstName, lastName);
+        return student;
+    }
+
+    private String readLine() {
+        String line;
+        StringBuilder stringBuilder = new StringBuilder();
+        try {
+            if ((line = in.readLine()) != null) {
+                stringBuilder.append(line);
+            }
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+        return stringBuilder.toString();
     }
 
     private void printHelloInfo() {
         printMessage(EXAM_WELCOME);
     }
-
     private void printAndAnswerTheQuestion(Question question) {
         printMessage(QUESTION_TITLE, ": " + question.getQuestion());
         printMessage(ANSWER_TITLE, ": ");
-        String answer = consoleReader.read();
+        String answer = readLine();
         if (answer.equalsIgnoreCase(question.getRightAnswer())) {
             rightAnswersGiven = rightAnswersGiven + 1;
             printMessage(RIGHT_ANSWER_TITLE);
@@ -123,10 +141,10 @@ public class ExamServiceImpl implements ExamService {
     }
 
     private void printMessage(String s) {
-        consoleWriter.write(getMessage(s));
+        out.println(getMessage(s));
     }
 
     private void printMessage(String messageCode, String restMessage) {
-        consoleWriter.write(getMessage(messageCode) + restMessage);
+        out.println(getMessage(messageCode) + restMessage);
     }
 }

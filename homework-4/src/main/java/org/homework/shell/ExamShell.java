@@ -12,13 +12,10 @@ import org.springframework.shell.standard.ShellOption;
 
 @ShellComponent
 public class ExamShell {
-    private static final String NOT_LOGGED_IN = "login.not_logged_in";
-
     private final ExamService examService;
-
     private final MessageSource messageSource;
-
     private final ApplicationSettings applicationSettings;
+    private static final String NOT_LOGGED_IN = "login.not_logged_in";
 
     private Student student;
 
@@ -44,16 +41,9 @@ public class ExamShell {
     public void getResult() {
         examService.printExamResults();
     }
-
     public Availability isLoggedIn() {
         return this.student != null ?
                 Availability.available() :
-                Availability.unavailable(
-                        messageSource.getMessage(
-                                NOT_LOGGED_IN,
-                                null,
-                                applicationSettings.getLocale()
-                        )
-                );
+                Availability.unavailable(messageSource.getMessage(NOT_LOGGED_IN, null, applicationSettings.getLocale()));
     }
 }

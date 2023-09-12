@@ -5,8 +5,6 @@ import org.homework.dao.QuestionsDao;
 import org.homework.domain.Question;
 import org.homework.service.ExamService;
 import org.homework.service.ExamServiceImpl;
-import org.homework.utils.ConsoleReader;
-import org.homework.utils.ConsoleReaderImpl;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -19,6 +17,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.context.MessageSource;
 import java.io.BufferedReader;
 import java.io.IOException;
+import java.io.PrintStream;
 import java.util.List;
 import java.util.Locale;
 import static org.junit.jupiter.api.Assertions.*;
@@ -35,6 +34,7 @@ public class ExamServiceTest {
     MessageSource messageSource;
     @Mock
     BufferedReader bufferedReader;
+    final PrintStream writer = System.out;
     private ExamService examService;
 
     @BeforeEach
@@ -58,8 +58,7 @@ public class ExamServiceTest {
         Mockito.when(messageSource.getMessage("progress.final.success", null, Locale.getDefault())).thenReturn("passed exam!");
         Mockito.when(messageSource.getMessage("progress.final.failed", null, Locale.getDefault())).thenReturn("failed exam, try again next time");
 
-        ConsoleReader consoleReader = new ConsoleReaderImpl(bufferedReader);
-        examService = new ExamServiceImpl(questionsDao, messageSource, consoleReader, applicationSettings);
+        examService = new ExamServiceImpl(questionsDao, messageSource, bufferedReader, writer, applicationSettings);
     }
 
     @Test

@@ -1,6 +1,7 @@
 package org.homework;
 
 import org.homework.service.AppStarter;
+import org.springframework.context.ApplicationContext;
 import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 

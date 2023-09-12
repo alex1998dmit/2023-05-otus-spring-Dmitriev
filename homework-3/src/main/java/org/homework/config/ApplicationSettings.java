@@ -15,8 +15,6 @@ import java.util.Locale;
 @NoArgsConstructor
 public class ApplicationSettings {
     private Locale locale;
-
     private String filePath;
-
     private int answersToPass;
 }
