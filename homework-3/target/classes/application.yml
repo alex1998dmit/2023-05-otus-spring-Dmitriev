@@ -1,0 +1,4 @@
+application:
+  locale: ru_RU
+  filePath: /questions
+  answersToPass: 1
