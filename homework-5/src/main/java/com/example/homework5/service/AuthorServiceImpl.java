@@ -65,33 +65,18 @@ public class AuthorServiceImpl implements AuthorService {
     public void getById() {
         Long authorId = readAuthorId();
         Optional<Author> author = authorDao.getById(authorId);
-        printAuthorInfo(author);
+        author.ifPresent(consoleWriter::writeEntityInfo);
     }
 
     @Override
     public void getAll() {
         List<Author> authors = authorDao.getAll();
         for (var author : authors) {
-            printAuthorInfo(author);
+            consoleWriter.writeEntityInfo(author);
         }
     }
 
     private Long readAuthorId() {
         return consoleReader.readLong("Enter author id: ");
-    }
-
-    private void printAuthorInfo(Optional<Author> author) {
-        author.ifPresent(value ->
-                consoleWriter.write(
-                        value.getFirstName() + " - " + value.getLastName() + " - " + value.getMiddleName()
-                )
-        );
-    }
-
-    private void printAuthorInfo(Author author) {
-            consoleWriter.write(
-                    author.getId() + " - " + author.getFirstName() + " - "
-                            + author.getLastName() + " - " + author.getMiddleName()
-            );
     }
 }

@@ -8,7 +8,6 @@ import com.example.homework5.utils.ConsoleWriter;
 import com.example.homework5.utils.ConsoleWriterImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import java.util.List;
 import java.util.Optional;
 
@@ -66,7 +65,7 @@ public class BookServiceImpl implements BookService {
     public Optional<Book> getById() {
         Long bookId = readBookId();
         Optional<Book> book = bookDao.getById(bookId);
-        printBookInfo(book);
+        book.ifPresent(consoleWriter::writeEntityInfo);
         return book;
     }
 
@@ -74,26 +73,12 @@ public class BookServiceImpl implements BookService {
     public List<Book> getAll() {
         List<Book> books = bookDao.getAll();
         for (var book : books) {
-            printBookInfo(book);
+            consoleWriter.writeEntityInfo(book);
         }
         return books;
     }
 
     private Long readBookId() {
         return consoleReader.readLong("Enter book id: ");
-    }
-
-    private void printBookInfo(Optional<Book> book) {
-        book.ifPresentOrElse(
-                value -> consoleWriter.write(
-                        value.getTitle() + " - " + value.getAuthorId() + " - " + value.getGenreId()
-                ),
-                () -> consoleWriter.write("Not found")
-        );
-
-    }
-
-    private void printBookInfo(Book book) {
-        consoleWriter.write(book.getTitle() + " - " + book.getAuthorId() + " - " + book.getGenreId());
     }
 }

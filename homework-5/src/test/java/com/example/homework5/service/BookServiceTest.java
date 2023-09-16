@@ -1,7 +1,9 @@
 package com.example.homework5.service;
 
 import com.example.homework5.dao.BookDao;
+import com.example.homework5.domain.Author;
 import com.example.homework5.domain.Book;
+import com.example.homework5.domain.Genre;
 import com.example.homework5.utils.ConsoleReader;
 import com.example.homework5.utils.ConsoleReaderImpl;
 import org.junit.jupiter.api.BeforeEach;
@@ -33,9 +35,13 @@ public class BookServiceTest {
 
     private BookService bookService;
 
-    private final Book bookTest1 = Book.builder().id(1L).title("lord of the rings").genreId(1L).authorId(1L).build();
+    private final Author authorTest1 = Author.builder().id(1L).firstName("test").lastName("testovich").middleName("testov").build();
 
-    private final Book bookTest2 = Book.builder().id(2L).title("harry potter").genreId(2L).authorId(2L).build();
+    private final Genre genreTest1 = Genre.builder().id(1L).title("test genre").build();
+
+    private final Book bookTest1 = Book.builder().id(1L).title("lord of the rings").genreId(1L).authorId(1L).author(authorTest1).genre(genreTest1).build();
+
+    private final Book bookTest2 = Book.builder().id(2L).title("harry potter").genreId(1L).authorId(1L).genre(genreTest1).author(authorTest1).build();
 
     @BeforeEach
     public void init() {

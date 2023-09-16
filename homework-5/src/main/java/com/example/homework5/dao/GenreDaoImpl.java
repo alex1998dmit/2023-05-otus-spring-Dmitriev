@@ -7,13 +7,13 @@ import org.springframework.jdbc.core.RowMapper;
 import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcOperations;
 import org.springframework.jdbc.core.namedparam.SqlParameterSource;
-import org.springframework.stereotype.Repository;
+import org.springframework.stereotype.Component;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.List;
 import java.util.Optional;
 
-@Repository
+@Component
 public class GenreDaoImpl implements GenreDao {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private final NamedParameterJdbcOperations jdbcOperations;
@@ -47,7 +47,7 @@ public class GenreDaoImpl implements GenreDao {
     public Optional<Genre> getById(Long genreId) {
         SqlParameterSource params = new MapSqlParameterSource().addValue("id", genreId);
         Genre genre = jdbcOperations.queryForObject(
-                "select * from genres where id = :id",
+                "select id, title from genres where id = :id",
                 params, new GenreDaoImpl.GenreMapper()
         );
         return Optional.ofNullable(genre);
@@ -56,7 +56,7 @@ public class GenreDaoImpl implements GenreDao {
     @Override
     public List<Genre> getAll() {
         return jdbcOperations.query(
-                "select * from genres order by id asc",
+                "select id, title from genres order by id asc",
                 new GenreDaoImpl.GenreMapper()
         );
     }

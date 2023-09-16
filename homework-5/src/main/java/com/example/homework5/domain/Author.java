@@ -15,4 +15,8 @@ public class Author {
     private String lastName;
 
     private String middleName;
+
+    public String getFullName() {
+        return this.lastName + " " + this.firstName + " " + this.middleName;
+    }
 }

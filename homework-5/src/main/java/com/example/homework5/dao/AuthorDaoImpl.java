@@ -7,13 +7,13 @@ import org.springframework.jdbc.core.RowMapper;
 import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcOperations;
 import org.springframework.jdbc.core.namedparam.SqlParameterSource;
-import org.springframework.stereotype.Repository;
+import org.springframework.stereotype.Component;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.List;
 import java.util.Optional;
 
-@Repository
+@Component
 public class AuthorDaoImpl implements AuthorDao {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private final NamedParameterJdbcOperations jdbcOperations;
@@ -61,7 +61,7 @@ public class AuthorDaoImpl implements AuthorDao {
     public Optional<Author> getById(Long authorId) {
         SqlParameterSource params = new MapSqlParameterSource().addValue("id", authorId);
         Author author = jdbcOperations.queryForObject(
-                "select * from authors where id = :id",
+                "select id, firstName, lastName, middleName from authors where id = :id",
                 params, new AuthorMapper());
         return Optional.ofNullable(author);
     }
@@ -69,7 +69,7 @@ public class AuthorDaoImpl implements AuthorDao {
     @Override
     public List<Author> getAll() {
         return jdbcOperations.query(
-                "select * from authors order by id asc",
+                "select id, firstName, lastName, middleName from authors order by id asc",
                 new AuthorMapper()
         );
     }
