@@ -93,7 +93,7 @@ public class BookServiceImpl implements BookService {
     public Book getById() {
         Long bookId = readBookId();
         Book book = bookDao.getById(bookId);
-        printBookInfo(book);
+        consoleWriter.writeEntityInfo(book);
         return book;
     }
 
@@ -101,16 +101,12 @@ public class BookServiceImpl implements BookService {
     public List<Book> getAll() {
         List<Book> books = bookDao.getAll();
         for (var book : books) {
-            printBookInfo(book);
+            consoleWriter.writeEntityInfo(book);
         }
         return books;
     }
 
     private Long readBookId() {
         return consoleReader.readLong("Enter book id: ");
-    }
-
-    private void printBookInfo(Book book) {
-        consoleWriter.write(book.getTitle() + " - " + book.getAuthor().getFullName() + " - " + book.getGenre().getTitle());
     }
 }

@@ -77,7 +77,7 @@ public class CommentServiceImpl implements CommentService {
     public Comment getById() {
         Long commentId = readCommentId();
         Comment comment = commentDao.getById(commentId);
-        printCommentInfo(comment);
+        consoleWriter.writeEntityInfo(comment);
         return comment;
     }
 
@@ -85,18 +85,12 @@ public class CommentServiceImpl implements CommentService {
     public List<Comment> getAll() {
         List<Comment> comments = commentDao.getAll();
         for (var comment : comments) {
-            printCommentInfo(comment);
+            consoleWriter.writeEntityInfo(comment);
         }
         return comments;
     }
 
     private Long readCommentId() {
         return consoleReader.readLong("Enter comment id: ");
-    }
-
-    private void printCommentInfo(Comment comment) {
-        consoleWriter.write(
-                comment.getId() + " - " + comment.getText() + " - " + comment.getBook().getTitle()
-        );
     }
 }

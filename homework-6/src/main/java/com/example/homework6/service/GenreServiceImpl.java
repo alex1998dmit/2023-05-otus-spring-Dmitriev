@@ -59,22 +59,18 @@ public class GenreServiceImpl implements GenreService {
     public void getById() {
         Long genreId = readGenreId();
         Genre genre = genreDao.getById(genreId);
-        printGenreInfo(genre);
+        consoleWriter.writeEntityInfo(genre);
     }
 
     @Override
     public void getAll() {
         List<Genre> genres = genreDao.getAll();
         for (var genre : genres) {
-            printGenreInfo(genre);
+            consoleWriter.writeEntityInfo(genre);
         }
     }
 
     private Long readGenreId() {
         return consoleReader.readLong("Enter genre id: ");
-    }
-
-    private void printGenreInfo(Genre genre) {
-        consoleWriter.write(genre.getId() + " - " + genre.getTitle());
     }
 }

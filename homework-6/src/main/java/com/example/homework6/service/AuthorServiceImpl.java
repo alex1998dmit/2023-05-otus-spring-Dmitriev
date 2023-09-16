@@ -61,24 +61,18 @@ public class AuthorServiceImpl implements AuthorService {
     public void getById() {
         Long authorId = readAuthorId();
         Author author = authorDao.getById(authorId);
-        printAuthorInfo(author);
+        consoleWriter.writeEntityInfo(author);
     }
 
     @Override
     public void getAll() {
         List<Author> authors = authorDao.getAll();
         for (var author : authors) {
-            printAuthorInfo(author);
+            consoleWriter.writeEntityInfo(author);
         }
     }
 
     private Long readAuthorId() {
         return consoleReader.readLong("Enter author id: ");
-    }
-
-    private void printAuthorInfo(Author author) {
-            consoleWriter.write(
-                    author.getId() + " - " + author.getFullName()
-            );
     }
 }
