@@ -1,0 +1,25 @@
+DROP TABLE IF EXISTS books;
+DROP TABLE IF EXISTS genres;
+DROP TABLE IF EXISTS authors;
+
+CREATE TABLE authors
+(
+    id BIGINT PRIMARY KEY AUTO_INCREMENT,
+    firstName VARCHAR(255),
+    lastName VARCHAR(255),
+    middleName VARCHAR(255)
+);
+
+CREATE TABLE genres
+(
+    id BIGINT PRIMARY KEY AUTO_INCREMENT,
+    title VARCHAR(255) UNIQUE
+);
+
+CREATE TABLE books
+(
+    id BIGINT PRIMARY KEY AUTO_INCREMENT,
+    title VARCHAR(255),
+    author_id BIGINT REFERENCES authors (id),
+    genre_id BIGINT REFERENCES genres (id)
+);
