@@ -1,5 +1,0 @@
-<?xml version="1.0" encoding="UTF-8" ?>
-<dataset>
-    <authors id = "1000" last_name = "John" first_name="Tolkien" middle_name="Ronald"/>
-    <authors id = "2000" last_name = "Alexander" first_name="Pushkin" middle_name="Sergeevich"/>
-</dataset>
