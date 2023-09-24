@@ -4,13 +4,13 @@ import com.example.homework6.domain.Book;
 import java.util.List;
 
 public interface BookService {
-    void createBook();
+    Book createBook(Book book);
 
-    void updateBook();
+    Book updateBook(Book book);
 
-    void deleteBook();
+    void deleteBook(Long bookId);
 
-    Book getById();
+    Book getById(Long bookId);
 
     List<Book> getAll();
 }

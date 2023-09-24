@@ -3,26 +3,24 @@ package com.example.homework6.dao;
 import com.example.homework6.domain.Comment;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
-import org.springframework.stereotype.Repository;
-import org.springframework.transaction.annotation.Transactional;
+import org.springframework.stereotype.Component;
 import java.util.List;
 
-@Repository
+@Component
 public class CommentDaoImpl implements CommentDao {
     @PersistenceContext
     private EntityManager entityManager;
 
     @Override
-    @Transactional
     public Comment createComment(Comment comment) {
         entityManager.persist(comment);
         return comment;
     }
 
     @Override
-    @Transactional
-    public void updateComment(Comment comment) {
+    public Comment updateComment(Comment comment) {
         entityManager.merge(comment);
+        return comment;
     }
 
     @Override
@@ -32,7 +30,6 @@ public class CommentDaoImpl implements CommentDao {
     }
 
     @Override
-    @Transactional(readOnly = true)
     public Comment getById(Long commentId) {
         return entityManager.find(Comment.class, commentId);
     }

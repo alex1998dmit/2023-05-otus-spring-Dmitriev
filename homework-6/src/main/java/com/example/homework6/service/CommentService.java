@@ -4,13 +4,13 @@ import com.example.homework6.domain.Comment;
 import java.util.List;
 
 public interface CommentService {
-    void createComment();
+    Comment createComment(Comment comment);
 
-    void updateComment();
+    Comment updateComment(Comment comment);
 
-    void deleteComment();
+    void deleteComment(Long commentID);
 
-    Comment getById();
+    Comment getById(Long commentId);
 
     List<Comment> getAll();
 }

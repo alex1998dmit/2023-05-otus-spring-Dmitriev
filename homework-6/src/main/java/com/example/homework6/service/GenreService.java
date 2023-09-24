@@ -1,13 +1,16 @@
 package com.example.homework6.service;
 
+import com.example.homework6.domain.Genre;
+import java.util.List;
+
 public interface GenreService {
-    void createGenre();
+    Genre createGenre(Genre genre);
 
-    void updateGenre();
+    Genre updateGenre(Genre genre);
 
-    void deleteGenre();
+    void deleteGenre(Long genreId);
 
-    void getById();
+    Genre getById(Long genreId);
 
-    void getAll();
+    List<Genre> getAll();
 }

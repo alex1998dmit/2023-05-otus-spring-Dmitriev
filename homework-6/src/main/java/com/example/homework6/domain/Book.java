@@ -27,6 +27,6 @@ public class Book {
     private Author author;
 
     @EqualsAndHashCode.Exclude
-    @OneToMany(mappedBy = "book", fetch=FetchType.EAGER)
+    @OneToMany(mappedBy = "book", fetch=FetchType.LAZY)
     private List<Comment> comments;
 }

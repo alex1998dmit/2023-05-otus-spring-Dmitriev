@@ -4,8 +4,10 @@ import com.example.homework6.domain.Author;
 import com.example.homework6.domain.Book;
 import com.example.homework6.domain.Comment;
 import com.example.homework6.domain.Genre;
+import org.springframework.stereotype.Component;
 import java.io.PrintStream;
 
+@Component
 public class ConsoleWriterImpl implements ConsoleWriter {
     private final PrintStream out = System.out;
 
@@ -17,12 +19,6 @@ public class ConsoleWriterImpl implements ConsoleWriter {
     @Override
     public void writeEntityInfo(Book book) {
         write("| " + book.getId() + " - " + book.getTitle() + " - " + book.getAuthor().getFullName() + " - " + book.getGenre().getTitle() + " |");
-        if (book.getComments() != null && !book.getComments().isEmpty()) {
-            write("| Comments |");
-            for (var comment : book.getComments()) {
-                write("| " + comment.getId() + " - " + comment.getText() + " |");
-            }
-        }
     }
 
     @Override

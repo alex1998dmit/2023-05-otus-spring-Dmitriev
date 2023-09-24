@@ -23,6 +23,6 @@ public class Genre {
     private String title;
 
     @EqualsAndHashCode.Exclude
-    @OneToMany(mappedBy = "genre", fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "genre", fetch = FetchType.LAZY)
     private List<Book> book;
 }

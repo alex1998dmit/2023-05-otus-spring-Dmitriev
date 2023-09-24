@@ -25,7 +25,7 @@ public class Author {
     private String middleName;
 
     @EqualsAndHashCode.Exclude
-    @OneToMany(mappedBy = "author", fetch=FetchType.EAGER)
+    @OneToMany(mappedBy = "author", fetch=FetchType.LAZY)
     private List<Book> book;
 
     public String getFullName() {

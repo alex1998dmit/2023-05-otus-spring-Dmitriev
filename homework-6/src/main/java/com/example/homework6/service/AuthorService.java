@@ -1,13 +1,17 @@
 package com.example.homework6.service;
 
+import com.example.homework6.domain.Author;
+
+import java.util.List;
+
 public interface AuthorService {
-    void createAuthor();
+    Author createAuthor(Author author);
 
-    void updateAuthor();
+    Author updateAuthor(Author author);
 
-    void deleteAuthor();
+    Author getById(Long authorId);
 
-    void getById();
+    void deleteAuthor(Long authorId);
 
-    void getAll();
+    List<Author> getAll();
 }

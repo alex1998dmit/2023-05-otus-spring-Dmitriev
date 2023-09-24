@@ -6,7 +6,7 @@ import java.util.List;
 public interface AuthorDao {
     Author createAuthor(Author author);
 
-    void updateAuthor(Author author);
+    Author updateAuthor(Author author);
 
     void deleteAuthor(Long authorId);
 
